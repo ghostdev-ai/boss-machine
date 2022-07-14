@@ -1,16 +1,12 @@
 const express = require('express');
 const apiRouter = express.Router();
 
+const minionsRouter = require('./routes/minions');
+const ideasRouter = require('./routes/ideas');
+const meetingsRouter = require('./routes/meetings');
 
-apiRouter.get('/minions', (req, res, next) => {});
-
-apiRouter.post('/minions', (req, res, next) => {});
-
-apiRouter.get('/minions/:minionId', (req, res, next) => {});
-
-apiRouter.put('/minions/:minionId', (req, res, next) => {});
-
-apiRouter.delete('/minions', (req, res, next) => {});
-
+apiRouter.use('/minions', minionsRouter);
+apiRouter.use('/ideas', ideasRouter);
+apiRouter.use('/meetings', meetingsRouter);
 
 module.exports = apiRouter;
