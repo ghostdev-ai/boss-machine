@@ -192,6 +192,13 @@ const findDataArrayByName = (name) => {
   }
 }
 
+/**
+ * Takes only the single argument for model name. Returns the array of 
+ * elements in the database or 'null' if an invalid argument is supplied.
+ * 
+ * @param { string } modelType - The model name of the requested database. 
+ * @returns 
+ */
 const getAllFromDatabase = (modelType) => {
   const model = findDataArrayByName(modelType);
   if (model === null) {
@@ -200,6 +207,16 @@ const getAllFromDatabase = (modelType) => {
   return model.data;
 }
 
+
+/**
+ * Takes the model name argument and a second string argument representing 
+ * the unique ID of the element. Returns the instance with valid inputs and "null"
+ * with an invalid id. 
+ * 
+ * @param {*} modelType 
+ * @param {*} id 
+ * @returns 
+ */
 const getFromDatabaseById = (modelType, id) => {
   const model = findDataArrayByName(modelType);
   if (model === null) {
@@ -210,6 +227,20 @@ const getFromDatabaseById = (modelType, id) => {
   });
 }
 
+
+/**
+ * Takes the model name argument and a second argument which is an object
+ * with the key-value pairs of the new instance. "addToDatabase" handles
+ * assigning ".id" properties to the instances. It does not check to make sure that
+ * valid inputs are supplied, so you will have to add those checks to your routes 
+ * if necessary. "addToDatabase" will return the newly-created instance from the
+ * database. This function will validate the schema of the instance to create and
+ * throw an error if it is invalid.
+ * 
+ * @param {*} modelType 
+ * @param {*} instance 
+ * @returns 
+ */
 const addToDatabase = (modelType, instance) => {
   const model = findDataArrayByName(modelType);
   if (model === null) {
@@ -222,6 +253,19 @@ const addToDatabase = (modelType, instance) => {
   }
 }
 
+
+/**
+ * Takes the model name argument and a second argument which is an object 
+ * representing an updated instance. The instance provided must have a valid 
+ * ".id" property which will be used to match.  "updateInstanceInDatabase" will 
+ * return the updated instance in the database or null with invalid inputs. This 
+ * function will validate the schema of the updated instance and throw an error 
+ * if it is invalid. 
+ * 
+ * @param {*} modelType 
+ * @param {*} instance 
+ * @returns 
+ */
 const updateInstanceInDatabase = (modelType, instance) => {
   const model = findDataArrayByName(modelType);
   if (model === null) {
@@ -238,6 +282,12 @@ const updateInstanceInDatabase = (modelType, instance) => {
   }
 }
 
+/**
+ * 
+ * @param {*} modelType 
+ * @param {*} id 
+ * @returns 
+ */
 const deleteFromDatabasebyId = (modelType, id) => {
   const model = findDataArrayByName(modelType);
   if (model === null) {
@@ -254,6 +304,12 @@ const deleteFromDatabasebyId = (modelType, id) => {
   }
 }
 
+
+/**
+ * 
+ * @param {*} modelType 
+ * @returns 
+ */
 const deleteAllFromDatabase = (modelType) => {
   const model = findDataArrayByName(modelType);
   if (model === null) {
