@@ -9,7 +9,10 @@ meetingsRouter.get('/', (req, res, next) => {
 });
 
 // Create a new meeting and save it to the database
-meetingsRouter.post('/', (req, res, next) => {});
+meetingsRouter.post('/', (req, res, next) => {
+    const newMeeting = db.createMeeting();
+    res.status(200).send(newMeeting);
+});
 
 // Delete all meetings from the database
 meetingsRouter.delete('/', (req, res, next) => {

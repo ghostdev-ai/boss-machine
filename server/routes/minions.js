@@ -9,7 +9,11 @@ minionsRouter.get('/', (req, res, next) => {
 });
 
 // Create a new minion and save it to the database
-minionsRouter.post('/', (req, res, next) => {});
+minionsRouter.post('/', (req, res, next) => {
+    const minion = req.body;
+    const newMinion = db.addToDatabase('minions', minion);
+    res.status(200).send(newMinion);
+});
 
 // Get a single minion by id
 minionsRouter.get('/:minionId', (req, res, next) => {
@@ -19,7 +23,11 @@ minionsRouter.get('/:minionId', (req, res, next) => {
 });
 
 // Update a single minion by id
-minionsRouter.put('/:minionId', (req, res, next) => {});
+minionsRouter.put('/:minionId', (req, res, next) => {
+    const minion = req.body;
+    const updatedMinion = db.updateInstanceInDatabase('minions', minion);
+    res.status(200).send(updatedMinion);
+});
 
 // Delete a single minion by id
 minionsRouter.delete('/:minionId', (req, res, next) => {

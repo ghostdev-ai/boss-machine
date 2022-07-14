@@ -11,6 +11,9 @@ ideasRouter.get('/', (req, res, next) => {
 
 // Create a new idea and save it to the database
 ideasRouter.post('/', (req, res, next) => {
+    const idea = req.body;
+    const newIdea = db.addToDatabase('ideas', idea);
+    res.status(200).send(newIdea);
 });
 
 // Get a single idea by id
@@ -22,7 +25,9 @@ ideasRouter.get('/:ideaId', (req, res, next) => {
 
 // Update a single idea by id
 ideasRouter.put('/:ideaId', (req, res, next) => {
-    const { ideaId } = req.params;
+    const idea = req.body;
+    const updatedIdea = db.updateInstanceInDatabase('ideas', idea);
+    res.status(200).send(updatedIdea);
 });
 
 // Delete a single idea by id
