@@ -283,6 +283,9 @@ const updateInstanceInDatabase = (modelType, instance) => {
 }
 
 /**
+ * Takes the model name argument and a second string argument representing
+ * the unique ID of the element to delete. Returns 'true' if the delete occurs
+ * properly and 'false' if the element is not found. 
  * 
  * @param {*} modelType 
  * @param {*} id 
@@ -306,6 +309,9 @@ const deleteFromDatabasebyId = (modelType, id) => {
 
 
 /**
+ * Takes only the single argument for model name. Deletes all the elements from
+ * the proper model and returns a new, empty array. You will only need to use 
+ * this function for a /api/meetings route.
  * 
  * @param {*} modelType 
  * @returns 
